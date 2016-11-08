@@ -1,7 +1,6 @@
 <?php
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class AuthControllerTest extends TestCase
 {
@@ -14,8 +13,8 @@ class AuthControllerTest extends TestCase
 
         $request->seeJson([
            'status_code' => 422,
-           'email' => ['The email field is required.'],
-           'name'  => ['The name field is required.']
+           'email'       => ['The email field is required.'],
+           'name'        => ['The name field is required.'],
         ]);
 
         $request->assertResponseStatus(422);            // UNPROCESSED ENTITY
@@ -24,7 +23,7 @@ class AuthControllerTest extends TestCase
 
         $request->seeJson([
             'status_code' => 422,
-            'email' => ['The email field is required.'],
+            'email'       => ['The email field is required.'],
         ]);
 
         $request->assertResponseStatus(422);
@@ -37,11 +36,10 @@ class AuthControllerTest extends TestCase
 
         $request->seeJsonStructure([
             'message' => [
-                'api_token'
-            ]
+                'api_token',
+            ],
         ]);
 
         $request->assertResponseStatus(201);
     }
-
 }

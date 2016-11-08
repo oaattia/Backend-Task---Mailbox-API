@@ -6,9 +6,7 @@ use Carbon\Carbon;
 
 class MessagesPresenter extends Presenter
 {
-
     /**
-     *
      * @param $item
      *
      * @return mixed

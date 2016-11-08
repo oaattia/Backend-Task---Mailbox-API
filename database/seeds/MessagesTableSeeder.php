@@ -30,7 +30,7 @@ class MessagesTableSeeder extends Seeder
      */
     private function import($file)
     {
-        $json   = file_get_contents($file);
+        $json = file_get_contents($file);
         $object = json_decode($json);
 
         return $object;

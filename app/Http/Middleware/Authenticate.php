@@ -18,7 +18,7 @@ class Authenticate
     /**
      * Create a new middleware instance.
      *
-     * @param  \Illuminate\Contracts\Auth\Factory $auth
+     * @param \Illuminate\Contracts\Auth\Factory $auth
      *
      * @return void
      */
@@ -30,9 +30,9 @@ class Authenticate
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
-     * @param  string|null $guard
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     * @param string|null              $guard
      *
      * @return mixed
      */
@@ -42,8 +42,8 @@ class Authenticate
             return response([
                 'error' => [
                     'message'     => 'Unauthorized',
-                    'status_code' => Response::HTTP_UNAUTHORIZED
-                ]
+                    'status_code' => Response::HTTP_UNAUTHORIZED,
+                ],
             ], Response::HTTP_UNAUTHORIZED);
         }
 
