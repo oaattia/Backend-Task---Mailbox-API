@@ -1,5 +1,5 @@
 # Mailbox API
-Using [Lumen](https://www.lumen.laravel.com) to building a small E-mail client to manage their internal messaging.
+Using [Lumen](https://lumen.laravel.com/) to building a small E-mail client to manage their internal messaging.
 
 # Install
 - Run composer
