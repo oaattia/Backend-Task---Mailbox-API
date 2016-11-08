@@ -16,11 +16,27 @@ This will import the json file to table `messages` .
 ### POST '/api/register'
 - name: string
 - email: string(email), unique
-#### response
-```
+**Success**
+```javascript
 {
   "message": {
     "api_token": "API_TOKEN_HERE"
+  }
+}
+```
+**Fail**
+```javascript
+{
+  "error": {
+    "message": {
+      "name": [
+        "The name field is required."
+      ],
+      "email": [
+        "The email field is required."
+      ]
+    },
+    "status_code": 422
   }
 }
 ```
