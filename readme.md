@@ -16,6 +16,7 @@ This will import the json file to table `messages` .
 ### POST '/api/register'
 - name: string
 - email: string(email), unique
+
 **Success**
 ```javascript
 {
