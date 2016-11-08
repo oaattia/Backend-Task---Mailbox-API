@@ -12,5 +12,13 @@ To import the json file used, you can run the following command after migrating 
 
 This will import the json file to table `messages` . 
 
+## Endpoints
+### POST '/api/register'
+* parameters :
+- name: string
+- email: string(email), unique
+
+
+
 ## Testing
 `venor/bin/phpunit` to run test cases, tests can be found in folder `tests`
