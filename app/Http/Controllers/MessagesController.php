@@ -22,23 +22,21 @@ class MessagesController extends ApiController
      */
     private $request;
 
-
     /**
      * MessagesController constructor.
      *
      * @param MessagesPresenter $presenter
-     * @param Request $request
+     * @param Request           $request
      */
     public function __construct(MessagesPresenter $presenter, Request $request)
     {
         $this->presenter = $presenter;
-        $this->request   = $request;
+        $this->request = $request;
     }
-
 
     /**
      * Get all list for the messages
-     * and pass the status if you want filter by either archived or read parameters
+     * and pass the status if you want filter by either archived or read parameters.
      *
      * @return mixed
      */
@@ -46,7 +44,7 @@ class MessagesController extends ApiController
     {
         $messages = new Message();
 
-        if( $status = $this->request->input('status') ) {
+        if ($status = $this->request->input('status')) {
             $validator = Validator::make(['status' => $status], [
                 'status' => 'in:archived,read',
             ], ['in' => 'Status should be archived or read']);
@@ -56,12 +54,11 @@ class MessagesController extends ApiController
             }
 
             $messages = $messages->where($status, 1);
-
         }
 
         $messages = $messages->paginate($this->request->input('limit') ?: 3);
 
-        if ( ! $messages->count()) {
+        if (!$messages->count()) {
             return $this->respondNotFound();
         }
 
@@ -69,9 +66,10 @@ class MessagesController extends ApiController
     }
 
     /**
-     * Display specific message by Id
+     * Display specific message by Id.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -93,9 +91,8 @@ class MessagesController extends ApiController
         }
     }
 
-
     /**
-     * Assign message as archive in database
+     * Assign message as archive in database.
      *
      * @param $id
      *
@@ -113,10 +110,8 @@ class MessagesController extends ApiController
         }
     }
 
-
-
     /**
-     * Assign Message as read in database
+     * Assign Message as read in database.
      *
      * @param $id
      *
@@ -129,11 +124,8 @@ class MessagesController extends ApiController
             $message->update(['read' => 1]);
 
             return $this->respond($this->presenter->transform($message->toArray()));
-
         } catch (ModelNotFoundException $e) {
             return $this->respondNotFound();
         }
     }
-
-
 }
