@@ -101,5 +101,117 @@ This will import the json file to table `messages` .
 }
 ```
 
+
+
+### GET '/api/messages/{id}' ( show single message )
+- api_token: string(hashed)
+
+**Success**
+```javascript
+{
+  "uid": 21,
+  "sender": "Ernest Hemingway",
+  "subject": "animals",
+  "message": "This is a tale about nihilism. The story is about a combative nuclear engineer who hates animals. It starts in a ghost town on a world of forbidden magic. The story begins with a legal dispute and ends with a holiday celebration.",
+  "read": 0,
+  "archived": 1,
+  "time_sent": "2016-03-29 08:24:27"
+}
+```
+**Fail**
+```javascript
+{
+  "error": {
+    "message": "Unauthorized",
+    "status_code": 401
+  }
+}
+```
+
+
+
+
+### POST '/api/archive/{id}' ( post action to archive a message )
+- api_token: string(hashed)
+
+**Success**
+```javascript
+{
+  "uid": 21,
+  "sender": "Ernest Hemingway",
+  "subject": "animals",
+  "message": "This is a tale about nihilism. The story is about a combative nuclear engineer who hates animals. It starts in a ghost town on a world of forbidden magic. The story begins with a legal dispute and ends with a holiday celebration.",
+  "read": 0,
+  "archived": 1,
+  "time_sent": "2016-03-29 08:24:27"
+}
+```
+**Fail**
+```javascript
+{
+  "error": {
+    "message": "Unauthorized",
+    "status_code": 401
+  }
+}
+```
+
+
+
+
+### POST '/api/read/{id}' ( post action to read a message )
+- api_token: string(hashed)
+
+**Success**
+```javascript
+{
+  "uid": 21,
+  "sender": "Ernest Hemingway",
+  "subject": "animals",
+  "message": "This is a tale about nihilism. The story is about a combative nuclear engineer who hates animals. It starts in a ghost town on a world of forbidden magic. The story begins with a legal dispute and ends with a holiday celebration.",
+  "read": 1,
+  "archived": 1,
+  "time_sent": "2016-03-29 08:24:27"
+}
+```
+**Fail**
+```javascript
+{
+  "error": {
+    "message": "Unauthorized",
+    "status_code": 401
+  }
+}
+```
+
+
+
+### GET '/api/messages/{id}' ( show single message )
+- api_token: string(hashed)
+
+**Success**
+```javascript
+{
+  "uid": 21,
+  "sender": "Ernest Hemingway",
+  "subject": "animals",
+  "message": "This is a tale about nihilism. The story is about a combative nuclear engineer who hates animals. It starts in a ghost town on a world of forbidden magic. The story begins with a legal dispute and ends with a holiday celebration.",
+  "read": 0,
+  "archived": 1,
+  "time_sent": "2016-03-29 08:24:27"
+}
+```
+**Fail**
+```javascript
+{
+  "error": {
+    "message": "Unauthorized",
+    "status_code": 401
+  }
+}
+```
+
+
+
 ## Testing
 `venor/bin/phpunit` to run test cases, tests can be found in folder `tests`
