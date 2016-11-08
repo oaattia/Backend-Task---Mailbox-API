@@ -14,9 +14,16 @@ This will import the json file to table `messages` .
 
 ## Endpoints
 ### POST '/api/register'
-* parameters :
 - name: string
 - email: string(email), unique
+#### response
+```
+{
+  "message": {
+    "api_token": "API_TOKEN_HERE"
+  }
+}
+```
 
 
 
