@@ -1,7 +1,6 @@
 <?php
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class MessagesControllerTest extends TestCase
 {
@@ -31,15 +30,15 @@ class MessagesControllerTest extends TestCase
         $response = $this->json('GET', 'api/messages', ['api_token' => $this->user->api_token]);
 
         $response->seeJsonEquals([
-            "current_page"  => 1,
-            "from"          => 1,
-            "last_page"     => 1,
-            "next_page_url" => null,
-            "per_page"      => 3,
-            "prev_page_url" => null,
-            "to"            => 1,
-            "total"         => 1,
-            "data"          => [
+            'current_page'  => 1,
+            'from'          => 1,
+            'last_page'     => 1,
+            'next_page_url' => null,
+            'per_page'      => 3,
+            'prev_page_url' => null,
+            'to'            => 1,
+            'total'         => 1,
+            'data'          => [
                 [
                     'archived'  => $messages->archived,
                     'read'      => $messages->read,
@@ -53,7 +52,6 @@ class MessagesControllerTest extends TestCase
         ]);
 
         $response->assertResponseOk();
-
     }
 
     /** @test */
@@ -61,9 +59,9 @@ class MessagesControllerTest extends TestCase
     {
         $response = $this->json('GET', 'api/messages');
         $response->seeJsonEquals([
-            "error" => [
-                "message"     => "Unauthorized",
-                "status_code" => 401,
+            'error' => [
+                'message'     => 'Unauthorized',
+                'status_code' => 401,
             ],
         ]);
 
@@ -96,15 +94,15 @@ class MessagesControllerTest extends TestCase
         $response = $this->json('GET', 'api/messages', ['api_token' => $this->user->api_token, 'status' => 'archived']);
 
         $response->seeJsonEquals([
-            "current_page"  => 1,
-            "from"          => 1,
-            "last_page"     => 1,
-            "next_page_url" => null,
-            "per_page"      => 3,
-            "prev_page_url" => null,
-            "to"            => 1,
-            "total"         => 1,
-            "data"          => [
+            'current_page'  => 1,
+            'from'          => 1,
+            'last_page'     => 1,
+            'next_page_url' => null,
+            'per_page'      => 3,
+            'prev_page_url' => null,
+            'to'            => 1,
+            'total'         => 1,
+            'data'          => [
                 [
                     'archived'  => $messages->archived,
                     'read'      => $messages->read,
@@ -116,10 +114,7 @@ class MessagesControllerTest extends TestCase
                 ],
             ],
         ]);
-
-
     }
-
 
     /** @test */
     public function it_should_change_status_to_true_either_it_is_read_or_archived()
@@ -134,7 +129,7 @@ class MessagesControllerTest extends TestCase
             'time_sent' => $timestamp = time(),
         ]);
 
-        $response = $this->json('POST', 'api/messages/archive/' . $message->id, ['api_token' => $this->user->api_token]);
+        $response = $this->json('POST', 'api/messages/archive/'.$message->id, ['api_token' => $this->user->api_token]);
 
         $response->seeJsonEquals([
                 'archived'  => 1,
@@ -146,7 +141,7 @@ class MessagesControllerTest extends TestCase
                 'time_sent' => \Carbon\Carbon::createFromTimestamp($timestamp)->toDateTimeString(),
         ]);
 
-        $anotherResponse = $this->json('POST', 'api/messages/read/' . $message->id, ['api_token' => $this->user->api_token]);
+        $anotherResponse = $this->json('POST', 'api/messages/read/'.$message->id, ['api_token' => $this->user->api_token]);
 
         $anotherResponse->seeJsonEquals([
                 'archived'  => 1,
@@ -175,7 +170,7 @@ class MessagesControllerTest extends TestCase
             'time_sent' => $timestamp = time(),
         ]);
 
-        $response = $this->json('GET', 'api/messages/' . $message->id, ['api_token' => $this->user->api_token]);
+        $response = $this->json('GET', 'api/messages/'.$message->id, ['api_token' => $this->user->api_token]);
 
 
         $response->seeJsonEquals([
@@ -190,8 +185,5 @@ class MessagesControllerTest extends TestCase
 
 
         $this->assertResponseOk();
-
     }
-
-
 }

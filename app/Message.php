@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-
     /**
-     * Cast the variable to it's types
+     * Cast the variable to it's types.
      *
      * @var array
      */
@@ -38,10 +37,9 @@ class Message extends Model
 
 
     /**
-     * The timestamp for the model
+     * The timestamp for the model.
      *
      * @var bool
      */
     public $timestamps = false;
-
 }

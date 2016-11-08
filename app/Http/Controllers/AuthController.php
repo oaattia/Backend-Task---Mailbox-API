@@ -24,9 +24,8 @@ class AuthController extends ApiController
         $this->request = $request;
     }
 
-
     /**
-     * Register a new user and create a token
+     * Register a new user and create a token.
      *
      * @return mixed
      */
@@ -53,6 +52,4 @@ class AuthController extends ApiController
             'api_token' => $token,
         ]);
     }
-
-
 }
