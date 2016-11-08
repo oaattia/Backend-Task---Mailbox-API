@@ -45,9 +45,11 @@ class MessagesController extends ApiController
         $messages = new Message();
 
         if ($status = $this->request->input('status')) {
-            $validator = Validator::make(['status' => $status], [
-                'status' => 'in:archived,read',
-            ], ['in' => 'Status should be archived or read']);
+            $validator = Validator::make(
+                ['status' => $status],
+                ['status' => 'in:archived,read'],
+                ['in' => 'Status should be archived or read']
+            );
 
             if ($validator->fails()) {
                 return $this->respondUnprocessableEntityError($validator->getMessageBag());

@@ -2,7 +2,7 @@
 Using [Lumen](https://lumen.laravel.com/) to building a small E-mail client to manage their internal messaging.
 
 # Install
-- copy `.env.example` to `.env` and add the database configurations 
+- copy `.env.example` to `.env` and add the database configurations
 - Run composer
 `composer install`
 - Run Migrations files
