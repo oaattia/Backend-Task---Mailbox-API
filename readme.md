@@ -1,16 +1,16 @@
-# Mailbox api
+# Mailbox API
+Using [Lumen](https://www.lumen.laravel.com) to building a small E-mail client to manage their internal messaging.
 
 # Install
-Run composer
+- Run composer
 `composer install`
-Run Migrations files
+- Run Migrations files
 `php artisan migrate`
 
-## Importing the files
+## Importing json file
 To import the json file used, you can run the following command after migrating the files .
 `php artisan db:seed`
-
-This will import the json file to table `messages` . 
+This will import the json file to table `messages` .
 
 ## Endpoints
 ### POST '/api/register' ( register new user and create token )
@@ -46,6 +46,8 @@ This will import the json file to table `messages` .
 
 ### GET '/api/messages' ( list messages and filter them ( optional ) by status )
 - api_token: string(hashed)
+- page : integer ( page number )
+- limit: integer ( limit number of items )
 - status: archived\read ( optional )
   * if we passed this parameter then we can filter the messages by archived or read
 
@@ -210,7 +212,6 @@ This will import the json file to table `messages` .
   }
 }
 ```
-
 
 
 ## Testing
