@@ -12,6 +12,11 @@ To import the json file used, you can run the following command after migrating 
 `php artisan db:seed`
 This will import the json file to table `messages` .
 
+## Tables
+- messages
+- users
+- migrations
+
 ## Endpoints
 ### POST '/api/register' ( register new user and create token )
 - name: string
@@ -46,8 +51,8 @@ This will import the json file to table `messages` .
 
 ### GET '/api/messages' ( list messages and filter them ( optional ) by status )
 - api_token: string(hashed)
-- page : integer ( page number )
-- limit: integer ( limit number of items )
+- page : integer ( page number ) ( optional )
+- limit: integer ( limit number of items ) ( optional default 3 )
 - status: archived\read ( optional )
   * if we passed this parameter then we can filter the messages by archived or read
 
@@ -129,7 +134,6 @@ This will import the json file to table `messages` .
   }
 }
 ```
-
 
 
 
@@ -215,4 +219,4 @@ This will import the json file to table `messages` .
 
 
 ## Testing
-`venor/bin/phpunit` to run test cases, tests can be found in folder `tests`
+`venor/bin/phpunit` to run test cases, tests can be found in folder `tests` and for testing we are using `sqllite`
